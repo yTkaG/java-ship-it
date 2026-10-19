@@ -46,6 +46,31 @@ public class DeliveryApp {
 
     private static void addParcel() {
         // Подсказка: спросите тип посылки и необходимые поля, создайте объект и добавьте в allParcels
+        System.out.println("Какой тип посылки вы хотите отправить? /n" +
+                "1.Обычная /n" +
+                "2.Хрупкая /n" +
+                "3.Скоропртящуюся");
+        int choice = Integer.parseInt(scanner.nextLine());
+
+        switch (choice) {
+            case 1:
+                System.out.println("Укажите описание, вес, адрес и день отправки, через Enter");
+                String description = scanner.nextLine();
+                double weight = Double.parseDouble(scanner.nextLine());
+                String deliveryAddress = scanner.nextLine();
+                int sendDay = Integer.parseInt(scanner.nextLine());
+                StandardParcel standardParcel = new StandardParcel(description, weight, deliveryAddress, sendDay);
+                allParcels.add(standardParcel);
+                break;
+            case 2:
+
+                break;
+            case 3:
+
+                break;
+            default:
+                System.out.println("Неверный выбор.");
+        }
     }
 
     private static void sendParcels() {
