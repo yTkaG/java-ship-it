@@ -1,11 +1,11 @@
 package ru.yandex.practicum.delivery;
 
 public abstract class Parcel {
-    protected final String description;
-    protected final int weight;
-    protected final String deliveryAddress;
-    protected final int sendDay;
-    protected final int coefficient;
+    private final String description;
+    private final int weight;
+    private final String deliveryAddress;
+    private final int sendDay;
+    private final int coefficient;
 
     public Parcel(String description, int weight, String deliveryAddress, int sendDay, int coefficient) {
         this.description = description;
@@ -13,6 +13,18 @@ public abstract class Parcel {
         this.deliveryAddress = deliveryAddress;
         this.sendDay = sendDay;
         this.coefficient = coefficient;
+    }
+
+    public int getWeight() {
+        return weight;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public int getSendDay() {
+        return sendDay;
     }
 
     public void packageItem() {
