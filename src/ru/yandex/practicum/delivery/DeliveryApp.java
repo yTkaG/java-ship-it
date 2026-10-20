@@ -12,6 +12,10 @@ public class DeliveryApp {
     private static ParcelBox<StandardParcel> standardParcelBox = new ParcelBox<>(15);
     private static ParcelBox<FragileParcel> fragileParcelBox = new ParcelBox<>(10);
     private static ParcelBox<PerishableParcel> perishableParcelBox = new ParcelBox<>(5);
+    private static String description;
+    private static int weight;
+    private static String deliveryAddress;
+    private static int sendDay;
 
     public static void main(String[] args) {
         boolean running = true;
@@ -33,7 +37,7 @@ public class DeliveryApp {
                     status();
                     break;
                 case 5:
-                    printAllParvels();
+                    printAllParсels();
                     break;
                 case 0:
                     running = false;
@@ -63,20 +67,10 @@ public class DeliveryApp {
 
         int choice = Integer.parseInt(scanner.nextLine());
 
-        if (choice < 1 || choice > 3) {
-            System.out.println("Неверный выбор типа посылки.");
-            return;
-        }
-
-        System.out.println("Укажите описание, вес, адрес и день отправки, через Enter");
-
-        String description = scanner.nextLine();
-        int weight = Integer.parseInt(scanner.nextLine());
-        String deliveryAddress = scanner.nextLine();
-        int sendDay = Integer.parseInt(scanner.nextLine());
-
         switch (choice) {
             case 1: // обычная посылка
+                writeParcel();
+
                 StandardParcel standardParcel = new StandardParcel(description, weight, deliveryAddress, sendDay);
 
                 allParcels.add(standardParcel);
@@ -84,6 +78,8 @@ public class DeliveryApp {
                 break;
 
             case 2: // хрупкая посылка
+                writeParcel();
+
                 FragileParcel fragileParcel = new FragileParcel(description, weight, deliveryAddress, sendDay);
 
                 allParcels.add(fragileParcel);
@@ -92,6 +88,8 @@ public class DeliveryApp {
                 break;
 
             case 3:  // скоропортящаяся посылка
+                writeParcel();
+
                 System.out.println("Укажите срок годности");
 
                 int timeToLive = Integer.parseInt(scanner.nextLine());
@@ -102,6 +100,9 @@ public class DeliveryApp {
                 allParcels.add(perishableParcel);
                 perishableParcelBox.addParcel(perishableParcel);
                 break;
+
+            default:
+                System.out.println("Неверный выбор типа посылки.");
         }
     }
 
@@ -129,7 +130,16 @@ public class DeliveryApp {
         }
     }
 
-    private static void printAllParvels() {
+    private static void writeParcel() {
+        System.out.println("Укажите описание, вес, адрес и день отправки, через Enter");
+
+        description = scanner.nextLine();
+        weight = Integer.parseInt(scanner.nextLine());
+        deliveryAddress = scanner.nextLine();
+        sendDay = Integer.parseInt(scanner.nextLine());
+    }
+
+    private static void printAllParсels() {
         System.out.println("Выберите тип коробки:\n" +
                 " 1. Обычная\n" +
                 " 2. Хрупкая\n" +

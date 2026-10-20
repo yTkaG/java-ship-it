@@ -48,7 +48,7 @@ public class DeliveryCostTest {
     }
 
     @Test
-    public void shouldBe2ParcelInBoxWhenWeightIsBelowLimit() {
+    public void shouldBe2ParcelInBoxWhenWeightIsEqualToLimit() {
         standardParcelBox.addParcel(standardParcel);
         standardParcelBox.addParcel(standardParcel);
         assertEquals(2, standardParcelBox.getSize());
