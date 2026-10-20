@@ -28,4 +28,8 @@ public class ParcelBox<T extends Parcel> {
             System.out.println(parcel.getDescription());
         }
     }
+
+    public int getSize() {
+        return parcels.size();
+    }
 }
